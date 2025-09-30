@@ -11,7 +11,13 @@ int main()
 			<<"stringPTH : " << stringPTR << "\n"
 			<<"stringREF : " << &stringREF << std::endl;
 
-	std::cout << "s	   :" << s << "\n"
+	std::cout << "s	  : " << s << "\n"
+		<<"stringPTH : " << *stringPTR << "\n"
+		<<"stringREF : " << stringREF << std::endl;
+
+	stringREF = "test";
+	*stringPTR = "test2";
+	std::cout << "s	  : " << s << "\n"
 		<<"stringPTH : " << *stringPTR << "\n"
 		<<"stringREF : " << stringREF << std::endl;
 }
