@@ -1,8 +1,8 @@
-NAME = BraiiiiiiinnnzzzZ
+NAME = Harl
 CPP = g++
-SRC =	main.cpp zombieHorde.cpp Zombie.cpp -std=c++98
+SRC =	main.cpp Harl.cpp
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
 OBJDIR = objet
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
@@ -27,5 +27,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-

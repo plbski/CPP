@@ -1,8 +1,8 @@
-NAME = test
+NAME = violence
 CPP = g++
 SRC =	main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
-FLAGS = -Wall -Werror -Wextra -g
+FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
 OBJDIR = objet
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

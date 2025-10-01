@@ -2,7 +2,7 @@ NAME = test
 CPP = g++
 SRC =	main.cpp
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -std=c++98
 
 OBJDIR = objet
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
