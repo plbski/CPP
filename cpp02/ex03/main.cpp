@@ -12,13 +12,22 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
 }
 int main()
 {
-	Point a (Fixed (0), Fixed (-1));
-	Point const b (Fixed(10.0f), Fixed(2));
-	Point c(Fixed(-10.0f), Fixed(2));
-	Point p (Fixed (0) , Fixed (0));
-	if (bsp(a, b, c, p))
-		std::cout << "p est dedans" << std::endl;
+	Point a (0, -1);
+	Point const b (10.0f , 2);
+	Point c(-10.0f, 2);
+
+	Point inside (0, 0);
+	Point outside(-2, -2);
+
+	std::cout << "expected inside" << std::endl;
+	if (bsp(a, b, c, inside))
+		std::cout << "the point is inside" << std::endl;
 	else
-		std::cout << "p est dehors" << std::endl;
+		std::cout << "point is outside" << std::endl;
+	std::cout << "expected outside" << std::endl;
+	if (bsp(a, b, c, outside))
+		std::cout << "point is inside" << std::endl;
+	else
+		std::cout << "point is outside" << std::endl;
 	return(0);
 }

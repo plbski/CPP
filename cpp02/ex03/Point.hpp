@@ -10,8 +10,6 @@ class Point
 		Point(Fixed a, Fixed b);
 		Point(const Point &_point);
 		~Point();
-		Fixed get_x();
-		Fixed get_y();
 		Fixed det(const Point &a, const Point &b) const;
 	
 	private:
