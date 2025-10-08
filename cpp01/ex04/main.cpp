@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-#include <fstream>
+#include<fstream>
 
 std::string ft_replace(std::string s1, std::string s2, std::string text)
 {
@@ -20,15 +20,22 @@ std::string ft_replace(std::string s1, std::string s2, std::string text)
 int main(int argc, char **argv)
 {
 	if (argc != 4 )
+	{
+		std::cout << "nedd the filename, string 1, string 2" <<std::endl;
 		return(0);
+	}
+		
 	std::string filename = argv[1];
-	std::ofstream file_out(filename + ".replace");
-	std::ifstream file_in(filename);
+	filename += ".replace";
+	std::cout <<filename<<std::endl;
+	std::ofstream file_out(filename.c_str());
+	std::ifstream file_in(argv[1]);
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 	std::string text;
 	while (std::getline(file_in, text))
 		file_out << ft_replace(s1, s2, text) << '\n';
 	file_out.close();
+	file_in.close();
 	return(0);
 }

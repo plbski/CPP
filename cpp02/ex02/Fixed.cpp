@@ -53,13 +53,13 @@ Fixed& Fixed::operator=(const Fixed &point)
 	return(*this);
 }
 
-Fixed Fixed::operator+(const Fixed &point) const {return (this->rawbits + point.rawbits);}
+Fixed Fixed::operator+(const Fixed &point) const {return (this->toFloat() + point.toFloat());}
 
-Fixed Fixed::operator-(const Fixed &point) const {return (this->rawbits - point.rawbits);}
+Fixed Fixed::operator-(const Fixed &point) const {return (this->toFloat() - point.toFloat());}
 
-Fixed Fixed::operator*(const Fixed &point) const {return (this->rawbits * point.rawbits);}
+Fixed Fixed::operator*(const Fixed &point) const {return (this->toFloat() * point.toFloat());}
 
-Fixed Fixed::operator/(const Fixed &point) const {return (this->rawbits / point.rawbits);}
+Fixed Fixed::operator/(const Fixed &point) const {return (this->toFloat() / point.toFloat());}
 
 Fixed Fixed::operator++(int)
 {

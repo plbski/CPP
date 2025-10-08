@@ -10,6 +10,8 @@ int main()
 		std::cin >> level;
 		if (std::cin.eof())
 			return(0);
+		if (level == "exit")
+			break;
 		filou.complain(level);
 	}
 	

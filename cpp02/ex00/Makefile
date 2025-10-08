@@ -10,7 +10,7 @@ OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CPP) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CPP) $(FLAGS) $(OBJ)
 
 $(OBJDIR)/%.o:%.cpp | $(OBJDIR)
 	@$(CPP) $(FLAGS) -c $< -o $@

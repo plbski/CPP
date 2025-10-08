@@ -1,8 +1,8 @@
-NAME = sed
+NAME = open
 CPP = g++
-SRC =	main.cpp
+SRC =	main.cpp ClapTrap.cpp
 
-FLAGS = -Wall -Werror -Wextra -std=c++98
+FLAGS = -Wall -Werror -Wextra -g -std=c++98
 
 OBJDIR = objet
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))

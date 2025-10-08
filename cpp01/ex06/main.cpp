@@ -11,6 +11,8 @@ int main()
 		if (std::cin.eof())
 			return(0);
 		std::cout << std::endl;
+		if (level =="exit")
+			break;
 		filou.complain(level);
 	}
 	

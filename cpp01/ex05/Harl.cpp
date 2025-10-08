@@ -9,21 +9,21 @@ Harl::~Harl(){};
 
 void Harl::debug()
 {
-	std::cout << "debug mode" << std::endl;
+	std::cout << BOLDWHITE << "[ DEBUG ] \n" << RESET << "mode debogage online ... \nlet me check where is ur mistake !" << std::endl;
 }
 void Harl::info()
 {
-	std::cout << "info mode" << std::endl;
+	std::cout << BOLDGREEN << "[ INFO ] \n" <<RESET << "mode info online ... \nall good for now !" << std::endl;
 }
 
 void Harl::warning()
 {
-	std::cout << "warning mode" << std::endl;
+	std::cout << BOLDYELLOW << "[ WARNING ] \n" << RESET << "warning online ... \nhmmm that don't smell good u should stop know !" << std::endl;
 }
 
 void Harl::error()
 {
-	std::cout<< "error mode "<< std::endl;
+	std::cout<< BOLDRED << "[ ERROR ] \n" << RESET << "mode error online ... \nare u crazy ur computer going to die stop that !!! \n\n\n"<< std::endl;
 }
 
 void Harl::complain(std::string level)

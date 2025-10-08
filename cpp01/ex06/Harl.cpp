@@ -13,7 +13,7 @@ void Harl::debug()
 }
 void Harl::info()
 {
-	std::cout << BOLDGREEN << "[ INFO ] \n" <<RESET << "mode info online ... \nall good for know !" << std::endl;
+	std::cout << BOLDGREEN << "[ INFO ] \n" <<RESET << "mode info online ... \nall good for now !" << std::endl;
 }
 
 void Harl::warning()
