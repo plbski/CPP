@@ -1,19 +1,25 @@
-#include"ClapTrap.hpp"
+#include"../include/ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string _n): name(_n), H_point(10), E_point(10), damage(10)
 {
-	std::cout << "class " << name << " create" << std::endl;
+	std::cout << "class ClapTrap" << name << " create" << std::endl;
 };
+
+ClapTrap::ClapTrap(std::string _n, int H, int E, int d):name(_n), H_point(H), E_point(E), damage(d)
+{
+	std::cout << "class ClapTrap" << name << " create" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap &cp): name(cp.name), H_point(cp.H_point), E_point(cp.E_point), damage(10)
 {
-	std::cout << "class " << name << " create by copy " << std::endl;
+	std::cout << "class ClapTrap" << name << " create by copy " << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "class " << name << " destroye" << std::endl;
+	std::cout << "class ClapTrap" << name << " destroye" << std::endl;
 }
+
 
 void ClapTrap::attack(const std::string& target)
 {
@@ -35,9 +41,18 @@ void ClapTrap::takeDamage(unsigned int amount)
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
-{
+{	
 	E_point --;
 	H_point += amount;
 	std::cout<< name << " recover " << amount << " health point\nHealth point : " << H_point << std::endl;
 	std::cout << E_point << " energie remain" << std::endl;
 }
+
+void	ClapTrap::setH_point(int H){H_point = H;}
+void	ClapTrap::setE_point(int E){E_point = E;}
+void	ClapTrap::set_damage(int d){damage = d;}
+
+std::string ClapTrap::getName() const {return (name);}
+int ClapTrap::getH_point() const {return(H_point);}
+int ClapTrap::getE_point() const {return(E_point);}
+int ClapTrap::getDamage() const {return(damage);}
