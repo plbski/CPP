@@ -8,6 +8,14 @@ ScavTrap::~ScavTrap() {
     std::cout << "class ScavTrap " << this->getName() << " destroyed" << std::endl;
 }
 
+void ScavTrap::attack(const std::string& target)
+{
+	std::cout << BOLDCYAN
+	<< "\n	    >>> " << this->getName() << " <<<\n"
+	<< "💣 bomb " << target  << " and inflict damage"
+	<< this->getDamage() << " 💣\n"
+	<< RESET << std::endl;
+}
 void ScavTrap::guardGate()
 {
 	std::cout << BOLDGREEN 

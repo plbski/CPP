@@ -1,18 +1,44 @@
 #include"../include/ClapTrap.hpp"
 
+void ClapTrap::printCharacterCard() {
+    std::cout << BOLDBLUE
+              << "\n=====================================\n"
+              << "      🧙‍♂️  Character Card\n"
+              << "=====================================\n"
+              << RESET;
+
+    std::cout << BOLDYELLOW << "Name:   " << RESET << name << "\n";
+
+    std::cout << BOLDRED    << "HP:     " << RESET 
+              << std::setw(3) << H_point << " ❤️\n";
+
+    std::cout << BOLDGREEN  << "Damage: " << RESET 
+              << std::setw(3) << damage << " 🗡️\n";
+
+    std::cout << BOLDBLUE   << "Energy: " << RESET 
+              << std::setw(3) << E_point << " ⚡\n";
+
+    std::cout << BOLDBLUE
+              << "=====================================\n"
+              << RESET;
+}
+
 ClapTrap::ClapTrap(std::string _n): name(_n), H_point(10), E_point(10), damage(10)
 {
-	std::cout << "class ClapTrap" << name << " create" << std::endl;
+	std::cout << "class ClapTrap " << name << " create" << std::endl;
+	printCharacterCard();
 };
 
 ClapTrap::ClapTrap(std::string _n, int H, int E, int d):name(_n), H_point(H), E_point(E), damage(d)
 {
-	std::cout << "class ClapTrap" << name << " create" << std::endl;
+	std::cout << "class ClapTrap " << name << " create" << std::endl;
+	printCharacterCard();
 }
 
 ClapTrap::ClapTrap(const ClapTrap &cp): name(cp.name), H_point(cp.H_point), E_point(cp.E_point), damage(10)
 {
-	std::cout << "class ClapTrap" << name << " create by copy " << std::endl;
+	std::cout << "class ClapTrap " << name << " create by copy " << std::endl;
+	printCharacterCard();
 }
 
 ClapTrap::~ClapTrap()

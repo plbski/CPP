@@ -32,6 +32,7 @@ class ClapTrap
 		ClapTrap(std::string _n, int H, int E, int d);
 		ClapTrap(const ClapTrap &cp);
 		~ClapTrap();
+		void		printCharacterCard();
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
