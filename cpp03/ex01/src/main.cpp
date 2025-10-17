@@ -10,5 +10,7 @@ int main()
 	serena.takeDamage(20);
 	serena.beRepaired(14);
 	serena.guardGate();
+	ScavTrap claude(serena);
+	claude.guardGate();
 	return(0);
 }

@@ -43,7 +43,7 @@ ClapTrap::ClapTrap(const ClapTrap &cp): name(cp.name), H_point(cp.H_point), E_po
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "class ClapTrap" << name << " destroye" << std::endl;
+	std::cout << "class ClapTrap " << name << " destroye" << std::endl;
 }
 
 
@@ -55,6 +55,7 @@ void ClapTrap::attack(const std::string& target)
           << "💥 inflicts " << this->getDamage() << " points damage to "
 		  << target << "💥\n"
           << RESET << std::endl;
+     std::cout << E_point << " energie remain" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -71,7 +72,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	H_point += amount;
 	std::cout << BOLDYELLOW
           << "\n	   >>> " << this->getName() << " <<<\n"
-          << "    🏥 recover" << amount << " points health 🏥\n"
+          << "    🏥 recover " << amount << " points health 🏥\n"
           << RESET << std::endl;
 	std::cout << E_point << " energie remain" << std::endl;
 }

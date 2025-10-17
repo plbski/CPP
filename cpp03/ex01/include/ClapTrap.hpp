@@ -4,8 +4,6 @@
 #include <string>
 #include <iomanip> 
 #include <iostream>
-#include <thread>
-#include <chrono>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
