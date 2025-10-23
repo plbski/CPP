@@ -4,7 +4,7 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 public:
     ScavTrap(std::string name);
     ScavTrap(const ScavTrap &cp);
@@ -12,8 +12,11 @@ public:
 	void		attack(const std::string& target);
 	void	guardGate();
 
-private:
-    // fields
+protected:
+	static const int base_HP = 100;
+	static const int base_E = 50;
+	static const int base_D = 20;
+
 };
 
 #endif // SCAVTRAP_HPP

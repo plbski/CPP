@@ -1,17 +1,15 @@
 #include"../include/ScavTrap.hpp"
 #include"../include/FragTrap.hpp"
+#include"../include/DiamondTrap.hpp"
 
 int main()
 {
-	ClapTrap jean("jean");
-	jean.attack("random guys");
-	ScavTrap serena("serena");
-	serena.attack("random guys");
-	serena.beRepaired(20);
-	serena.takeDamage(20);
-	serena.beRepaired(14);
-	serena.guardGate();
-	FragTrap killer("killer");
-	killer.HighFiveGuys();
+	DiamondTrap dia("test");
+	dia.attack("ANYONE");
+	dia.whoAmI();
+	DiamondTrap copy(dia);
+	copy.guardGate();
+	copy.takeDamage(20);
+	dia.HighFiveGuys();
 	return(0);
 }
