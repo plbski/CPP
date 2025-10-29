@@ -14,6 +14,7 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << "class " << name << " destroye" << std::endl;
 }
+ClapTrap& ClapTrap::operator=(const ClapTrap &ct){(void)ct; return(*this);}
 
 void ClapTrap::attack(const std::string& target)
 {

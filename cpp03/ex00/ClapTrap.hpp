@@ -1,5 +1,5 @@
 #ifndef CLAPTRAP_HPP
-#define CLAAPTRAP_CPP
+#define CLAPTRAP_HPP
 
 #include <string>
 #include <iostream>
@@ -10,6 +10,7 @@ class ClapTrap
 		ClapTrap(std::string _n);
 		ClapTrap(const ClapTrap &cp);
 		~ClapTrap();
+		ClapTrap& operator=(const ClapTrap &ct);
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);

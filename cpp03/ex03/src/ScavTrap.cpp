@@ -19,6 +19,12 @@ ScavTrap::~ScavTrap() {
     std::cout << "class ScavTrap " << name << BOLDRED << " GET KILLED" << RESET << std::endl;
 }
 
+ScavTrap& ScavTrap::operator=(const ScavTrap &st)
+{
+	(void)st;
+	return(*this);
+}
+
 void ScavTrap::attack(const std::string& target)
 {
 	E_point --;

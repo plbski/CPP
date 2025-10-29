@@ -23,6 +23,12 @@ DiamondTrap::~DiamondTrap()
 	std::cout << BOLDBLACK << "THE CREATURE IS LEAVING\n" << RESET << std::endl;
 }
 
+DiamondTrap& DiamondTrap::operator=(const DiamondTrap &dt)
+{
+	(void) dt;
+	return(*this);
+}
+
 void DiamondTrap::whoAmI()
 {
 	std::cout << BOLDBLACK << name << " is Diamond name\n" << RESET 

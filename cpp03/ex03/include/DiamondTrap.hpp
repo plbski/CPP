@@ -10,6 +10,7 @@ public:
     DiamondTrap(std::string n);
 	DiamondTrap(const DiamondTrap &cp);
     ~DiamondTrap();
+	DiamondTrap& operator=(const DiamondTrap &dt);
 	void whoAmI();
 
 	using ScavTrap::attack;

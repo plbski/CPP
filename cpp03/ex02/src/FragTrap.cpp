@@ -19,6 +19,12 @@ FragTrap::~FragTrap() {
     std::cout << "class FragTrap " << name << BOLDRED << "RUN AWAY" << RESET << std::endl;
 }
 
+FragTrap& FragTrap::operator=(const FragTrap &ft)
+{
+	(void)ft;
+	return(*this);
+}
+
 void FragTrap::HighFiveGuys()
 {
 		std::cout << BOLDWHITE
