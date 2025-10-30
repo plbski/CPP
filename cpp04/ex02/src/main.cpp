@@ -5,6 +5,7 @@
 int main()
 {
 	Animal* array[4];
+	// Animal* test = new Animal();
 	for (int i = 0; i < 2 ; i++)
 		array[i] = new Cat();
 	for (int i = 2; i < 4; i++)
