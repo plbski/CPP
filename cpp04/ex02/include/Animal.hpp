@@ -31,8 +31,8 @@ class Animal
 		Animal& operator=(const Animal &other);
 		virtual void makeSound() const = 0;
 		std::string getType() const;
-		virtual void idea(std::string id);
-		virtual void printBrain() const;
+		virtual void idea(std::string id) = 0;
+		virtual void printBrain() const = 0;
 
 	protected:
 		std::string type;

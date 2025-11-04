@@ -28,7 +28,3 @@ Animal& Animal::operator=(const Animal &other) {
 }
 
 std::string Animal::getType() const {return(type);}
-
-void Animal::idea(std::string s){(void)s;}
-
-void Animal::printBrain() const {};
