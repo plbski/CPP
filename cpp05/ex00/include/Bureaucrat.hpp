@@ -3,6 +3,7 @@
 
 #include "../../color.hpp"
 #include <iostream>
+#include <exception>
 
 class Bureaucrat {
 public:
@@ -11,13 +12,27 @@ public:
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat& operator=(const Bureaucrat &other);
+
 	class GradeTooHightExpectation : public std::exception
 	{
-
+		public:
+			const char* what() const noexcept override
+			{
+				return("GradetoHight catch");
+			}
 	};
-	void		GradeTooLowExpectation();
-	std::string	getName();
-	std::string	getGrade();
+
+	class GradeTooLowExpectation : public std::exception
+	{
+		public:
+			const char* what() const noexcept override
+			{
+				return("GradetoLow catch");
+			}
+	};
+
+	std::string	getName() const;
+	int			getGrade() const;
 	void		gradeUp();
 	void		gradeDown();
 
@@ -25,5 +40,11 @@ private:
 	int grade;
 	const std::string name;
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
+{
+	os << b.getName() << ", bureaucrat grade " << b.getGrade();
+	return os;
+}
 
 #endif // BUREAUCRAT_HPP
