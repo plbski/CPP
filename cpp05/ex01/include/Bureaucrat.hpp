@@ -4,6 +4,7 @@
 #include "../../color.hpp"
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat {
 public:
@@ -12,6 +13,7 @@ public:
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat& operator=(const Bureaucrat &other);
+	void	signForm(Form &f);
 
 	class GradeTooHightExpectation : public std::exception
 	{

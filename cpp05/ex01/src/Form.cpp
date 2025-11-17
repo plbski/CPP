@@ -1,6 +1,6 @@
 #include "../include/Form.hpp"
 
-Form::Form() {
+Form::Form() : name("default"), gradeRex(1), gradeRsign(1) {
 	std::cout << "Form default constructor called" << std::endl;
 }
 
@@ -24,3 +24,12 @@ Form& Form::operator=(const Form &other) {
 	}
 	return *this;
 }
+
+void Form::besigned(const Bureaucrat &b)
+{
+	if(b.getGrade() > gradeRsign)
+		throw GradeTooHightExpectation();
+	sign = true;
+}
+
+std::string Form::getName()const {return(name);}

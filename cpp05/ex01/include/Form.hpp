@@ -2,6 +2,7 @@
 #define FORM_HPP
 
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Form {
 public:
@@ -9,7 +10,10 @@ public:
 	Form(std::string _name, int _gradeRsign, int _gradeRex);
 	~Form();
 	Form(const Form &other);
-	Form& operator=(const Form &other);
+	Form&		operator=(const Form &other);
+	void		besigned(const Bureaucrat &b);
+	std::string	getName() const;
+
 	class GradeTooHightExpectation : public std::exception
 	{
 		public:
