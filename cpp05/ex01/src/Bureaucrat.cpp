@@ -47,6 +47,15 @@ void Bureaucrat::gradeUp()
 
 void Bureaucrat::signForm(Form &f)
 {
+	try
+	{
+		f.besigned(*this);
+	}
+	 catch (std::exception &e)
+	 {
+		std::cout << getName() << " could not sign " << f.getName()
+		<< " because " << e.what() << std::endl;
+	 }
 
 }
 	

@@ -13,6 +13,8 @@ public:
 	Form&		operator=(const Form &other);
 	void		besigned(const Bureaucrat &b);
 	std::string	getName() const;
+	int			getGexec() const ;
+	int			getGsign() const;
 
 	class GradeTooHightExpectation : public std::exception
 	{
@@ -33,7 +35,7 @@ public:
 	};
 private:
 	const std::string	name;
-	bool				sign = false;
+	bool				sign;
 	const int			gradeRsign;
 	const int			gradeRex;
 };

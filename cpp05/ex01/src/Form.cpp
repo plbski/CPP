@@ -1,10 +1,10 @@
 #include "../include/Form.hpp"
 
-Form::Form() : name("default"), gradeRex(1), gradeRsign(1) {
+Form::Form() : name("default"), gradeRex(1), gradeRsign(1), sign(false){
 	std::cout << "Form default constructor called" << std::endl;
 }
 
-Form::Form(std::string _name, int _gradeRsign, int _gradeRex): name(_name), gradeRsign(_gradeRsign), gradeRex(_gradeRex)
+Form::Form(std::string _name, int _gradeRsign, int _gradeRex): name(_name), gradeRsign(_gradeRsign), gradeRex(_gradeRex), sign(false)
 {
 	std::cout << "Form default constructor called" << std::endl;
 }
@@ -32,4 +32,12 @@ void Form::besigned(const Bureaucrat &b)
 	sign = true;
 }
 
-std::string Form::getName()const {return(name);}
+std::string	Form::getName() const {return(name);}
+int			Form::getGsign() const {return(gradeRsign);}
+int			Form::getGexec() const {return(gradeRsign);}
+
+std::ostream& operator<<(std::ostream& os, const Form& b)
+{
+	os << b.getName() << ", Grade minimum for sign : " << b.getGsign() << ", grade minimum for execut : " << b.getGexec() << std::endl;
+	return os;
+}
