@@ -15,15 +15,14 @@ Bureaucrat::~Bureaucrat() {
 	std::cout << "Bureaucrat destructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) {
+Bureaucrat::Bureaucrat(const Bureaucrat &other): grade(other.grade), name(other.name) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
-	*this = other;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 	std::cout << "Bureaucrat copy assignment operator called" << std::endl;
 	if (this != &other) {
-		(void)other;
+		this->grade = other.grade;
 	}
 	return *this;
 }
@@ -44,4 +43,10 @@ void Bureaucrat::gradeUp()
 	if (grade - 1 < 1)
 		throw GradeTooHightExpectation();
 	grade --;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
+{
+	os << b.getName() << ", bureaucrat grade " << b.getGrade();
+	return os;
 }

@@ -16,7 +16,7 @@ public:
 	class GradeTooHightExpectation : public std::exception
 	{
 		public:
-			const char* what() const noexcept override
+			const char* what() const throw()
 			{
 				return("GradetoHight catch");
 			}
@@ -25,7 +25,7 @@ public:
 	class GradeTooLowExpectation : public std::exception
 	{
 		public:
-			const char* what() const noexcept override
+			const char* what() const throw()
 			{
 				return("GradetoLow catch");
 			}
@@ -42,9 +42,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
-{
-	os << b.getName() << ", bureaucrat grade " << b.getGrade();
-	return os;
-}
+
 
 #endif // BUREAUCRAT_HPP
