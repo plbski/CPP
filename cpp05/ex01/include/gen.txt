@@ -1,0 +1,52 @@
+#!/bin/bash
+
+read -p "Nom de la classe : " c
+upper=$(echo "$c" | tr '[:lower:]' '[:upper:]')
+mkdir -p include src
+
+cat > "include/$c.hpp" <<EOF
+#ifndef ${upper}_HPP
+#define ${upper}_HPP
+
+#include <iostream>
+
+class $c {
+public:
+        $c();
+        ~$c();
+        $c(const $c &other);
+        $c& operator=(const $c &other);
+
+private:
+        // fields
+};
+
+#endif // ${upper}_HPP
+EOF
+
+cat > "src/$c.cpp" <<EOF
+#include "../include/$c.hpp"
+
+$c::$c() {
+        std::cout << "$c default constructor called" << std::endl;
+}
+
+$c::~$c() {
+        std::cout << "$c destructor called" << std::endl;
+}
+
+$c::$c(const $c &other) {
+        std::cout << "$c copy constructor called" << std::endl;
+        *this = other;
+}
+
+$c& $c::operator=(const $c &other) {
+        std::cout << "$c copy assignment operator called" << std::endl;
+        if (this != &other) {
+                (void)other;
+        }
+        return *this;
+}
+EOF
+
+echo "✅ Fichiers include/$c.hpp et src/$c.cpp créés."
