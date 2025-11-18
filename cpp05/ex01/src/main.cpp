@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "../include/Bureaucrat.hpp"
+#include "../include/Form.hpp"
 
 int main()
 {

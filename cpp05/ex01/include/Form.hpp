@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
 public:
 	Form();
@@ -11,10 +13,11 @@ public:
 	~Form();
 	Form(const Form &other);
 	Form&		operator=(const Form &other);
-	void		besigned(const Bureaucrat &b);
+	void		besigned(Bureaucrat &b);
 	std::string	getName() const;
 	int			getGexec() const ;
 	int			getGsign() const;
+	bool		isSign() const;
 
 	class GradeTooHightExpectation : public std::exception
 	{
@@ -39,5 +42,7 @@ private:
 	const int			gradeRsign;
 	const int			gradeRex;
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& b);
 
 #endif // FORM_HPP

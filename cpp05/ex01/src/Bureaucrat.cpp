@@ -10,13 +10,14 @@ Bureaucrat::Bureaucrat(std::string _name, int _grade) : grade(_grade), name(_nam
 		throw GradeTooHightExpectation();
 	else if (_grade < 1)
 		throw GradeTooLowExpectation();
+	std::cout << name << " Bureaucrat constructor call" << std::endl;
 }
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << name << "Bureaucrat destructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other): grade(other.grade), name(other.name) {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	std::cout << name << " Bureaucrat copy constructor call" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
@@ -51,12 +52,11 @@ void Bureaucrat::signForm(Form &f)
 	{
 		f.besigned(*this);
 	}
-	 catch (std::exception &e)
-	 {
+	catch (std::exception &e)
+	{
 		std::cout << getName() << " could not sign " << f.getName()
 		<< " because " << e.what() << std::endl;
-	 }
-
+	}
 }
 	
 
