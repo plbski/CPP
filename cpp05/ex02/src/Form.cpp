@@ -1,4 +1,5 @@
 #include "../include/AForm.hpp"
+#include "../include/Bureaucrat.hpp"
 
 AForm::AForm() : name("default"),  sign(false), gradeRsign(1), gradeRex(1){
 	std::cout << name << " AForm constructor call" << std::endl;

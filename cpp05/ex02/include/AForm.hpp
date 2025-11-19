@@ -2,7 +2,7 @@
 #define AFORM_HPP
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include <fstream>
 
 class Bureaucrat;
 
@@ -18,7 +18,7 @@ public:
 	int				getGexec() const ;
 	int				getGsign() const;
 	bool			isSign() const;
-	virtual void	DoSomething() = 0;
+	virtual void	execute(Bureaucrat const &executor) = 0;
 
 	class GradeTooHightExpectation : public std::exception
 	{
@@ -35,6 +35,15 @@ public:
 			const char* what() const throw()
 			{
 				return("GradetoLow catch");
+			}
+	};
+
+	class NotSign : public std::exception
+	{
+		public:
+			const char* what() const throw()
+			{
+				return("Form not sign catch");
 			}
 	};
 
