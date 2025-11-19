@@ -45,7 +45,7 @@ void AForm::besigned(Bureaucrat &b)
 bool		AForm::isSign() const {return(sign);}
 std::string	AForm::getName() const {return(name);}
 int			AForm::getGsign() const {return(gradeRsign);}
-int			AForm::getGexec() const {return(gradeRsign);}
+int			AForm::getGexec() const {return(gradeRex);}
 
 std::ostream& operator<<(std::ostream& os, const AForm& b)
 {

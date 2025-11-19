@@ -11,7 +11,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
         std::cout << "ShrubberyCreationForm destructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other): AForm(other), target(other.target) {
         std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
         *this = other;
 }
@@ -32,6 +32,12 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
 		throw NotSign();
 	std::ofstream file(target.c_str());
 
+	file << "      /\\      " << std::endl;
+	file << "     /  \\     " << std::endl;
+	file << "    /++++\\    " << std::endl;
+	file << "   /  ++  \\   " << std::endl;
+	file << "  /        \\  " << std::endl;
+	file << "     ||||      " << std::endl;
 	file << "      /\\      " << std::endl;
 	file << "     /  \\     " << std::endl;
 	file << "    /++++\\    " << std::endl;
