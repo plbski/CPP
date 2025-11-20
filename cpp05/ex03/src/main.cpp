@@ -4,116 +4,84 @@
 #include "../include/ShrubberyCreationForm.hpp"
 #include "../include/RobotomyRequestForm.hpp"
 #include "../include/PresidentialPardonForm.hpp"
+#include "../include/Intern.hpp"
 
 int main()
 {
-    std::cout << "===== TEST 1 : Shrubbery signé + exécuté par un bon grade =====" << std::endl;
+    std::cout << "===== INTERN FORM CREATION TESTS =====" << std::endl;
+
+    Intern intern;
+    AForm *form;
+
+    std::cout << "\n--- Test 1: Create a ShrubberyCreationForm ---" << std::endl;
+    form = intern.makeForm("shrubbery request", "home");
+
+    if (form)
+        std::cout << "Form successfully created: " << form->getName() << std::endl;
+    else
+        std::cout << "Form creation failed." << std::endl;
+
+    std::cout << "\n--- Test 2: Create an unknown form ---" << std::endl;
+    AForm *badForm = intern.makeForm("unknown form", "test");
+
+    if (!badForm)
+        std::cout << "Unknown form correctly rejected." << std::endl;
+
+    std::cout << "\n===== BUREAUCRAT SIGN/EXECUTE TESTS =====" << std::endl;
+
     try
     {
-        Bureaucrat boss("Boss", 1);                 // très bon grade
-        ShrubberyCreationForm shrub("home");        // target = "home"
-		ShrubberyCreationForm test(shrub);
-		AForm *rrf = new RobotomyRequestForm("li");
-
-		std::cout << *rrf << std::endl;
+        Bureaucrat boss("Boss", 1);
         std::cout << boss << std::endl;
-        std::cout << shrub << std::endl;
-		std::cout << test << std::endl;
 
-        std::cout << "\n-> Boss sign the form" << std::endl;
-        shrub.besigned(boss);                       // doit réussir
+        if (form)
+        {
+            std::cout << "\n--- Test 3: Boss tries to sign the form ---" << std::endl;
+            form->besigned(boss);
+            std::cout << "Form is now signed." << std::endl;
 
-        std::cout << "\n-> Boss executed form" << std::endl;
-        shrub.execute(boss);                        // doit réussir (création du fichier, etc.)
-
-        std::cout << "\nExecution succed" << std::endl;
+            std::cout << "\n--- Test 4: Boss executes the form ---" << std::endl;
+            form->execute(boss);
+            std::cout << "Form executed successfully." << std::endl;
+        }
     }
     catch (std::exception &e)
     {
-        std::cout << "Exception catch (TEST 1) : " << e.what() << std::endl;
+        std::cout << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST 2 : exécution sans signature =====" << std::endl;
+    std::cout << "\n===== ERROR HANDLING TESTS =====" << std::endl;
+
     try
     {
-        Bureaucrat bob("Bob", 1);
-        ShrubberyCreationForm shrub2("garden");
+        Bureaucrat lowRank("LowRank", 150);
+        ShrubberyCreationForm shrub("garden");
 
-        std::cout << bob << std::endl;
-        std::cout << shrub2 << std::endl;
+        std::cout << lowRank << std::endl;
+        std::cout << "\n--- Test 5: LowRank tries to sign ---" << std::endl;
 
-        std::cout << "\n-> Bob try to execute without sign" << std::endl;
-        shrub2.execute(bob);                        // doit lancer NotSign
+        shrub.besigned(lowRank);  // should throw
     }
     catch (std::exception &e)
     {
-        std::cout << "Exception catch (TEST 2) : " << e.what() << std::endl;
+        std::cout << "Expected exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST 3 : grade trop bas pour exécuter =====" << std::endl;
     try
     {
-        Bureaucrat low("Intern", 150);              // très mauvais grade
-        ShrubberyCreationForm shrub3("yard");
+        Bureaucrat medium("MediumGuy", 100);
+        ShrubberyCreationForm shrub2("forest");
 
-        std::cout << low << std::endl;
-        std::cout << shrub3 << std::endl;
-
-        std::cout << "\n-> Intern sign the form (si autorisé)" << std::endl;
-        shrub3.besigned(low);                       // selon tes règles, peut déjà échouer ici
-
-        std::cout << "\n-> Intern try to execute" << std::endl;
-        shrub3.execute(low);                        // doit lancer GradeTooLowExpectation
+        std::cout << "\n--- Test 6: Execute without signing ---" << std::endl;
+        shrub2.execute(medium);  // should throw
     }
     catch (std::exception &e)
     {
-        std::cout << "Exception catch (TEST 3) : " << e.what() << std::endl;
+        std::cout << "Expected exception: " << e.what() << std::endl;
     }
 
-	std::cout << "\n===== TEST 4 : Robotomy signé + exécuté par un bon grade =====" << std::endl;
-    try
-    {
-        Bureaucrat boss("Boss", 1);                 // très bon grade
-        RobotomyRequestForm shrub("home");        // target = "home"
-
-        std::cout << boss << std::endl;
-        std::cout << shrub << std::endl;
-
-        std::cout << "\n-> Boss sign the form" << std::endl;
-        shrub.besigned(boss);                       // doit réussir
-
-        std::cout << "\n-> Boss executed form" << std::endl;
-        shrub.execute(boss);                        // doit réussir (création du fichier, etc.)
-
-        std::cout << "\nExecution succed" << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception catch (TEST 1) : " << e.what() << std::endl;
-    }
-
-	std::cout << "\n===== TEST 5 : Presidential pardon signé + exécuté par un bon grade =====" << std::endl;
-    try
-    {
-        Bureaucrat boss("Boss", 1);                 // très bon grade
-        PresidentialPardonForm shrub("home");        // target = "home"
-
-        std::cout << boss << std::endl;
-        std::cout << shrub << std::endl;
-
-        std::cout << "\n-> Boss sign the form" << std::endl;
-        shrub.besigned(boss);                       // doit réussir
-
-        std::cout << "\n-> Boss executed form" << std::endl;
-        shrub.execute(boss);                        // doit réussir (création du fichier, etc.)
-
-        std::cout << "\nExecution succed" << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception catch (TEST 1) : " << e.what() << std::endl;
-    }
-    std::cout << "\n===== FIN DES TESTS =====" << std::endl;
+    std::cout << "\n===== END OF TESTS =====" << std::endl;
     return 0;
 }
+
 

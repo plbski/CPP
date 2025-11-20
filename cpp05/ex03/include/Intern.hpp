@@ -14,6 +14,10 @@ public:
         Intern(const Intern &other);
         Intern& operator=(const Intern &other);
 		AForm *makeForm(std::string name, std::string target);
+		static AForm *makeShrubbery(std::string target);
+		static AForm *makeRobotomy(std::string target);
+		static AForm *makePresident(std::string target);
+
 
 private:
 

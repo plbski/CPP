@@ -25,13 +25,32 @@ AForm *Intern::makeForm(std::string name, std::string target)
 {
 	int i = 0;
 	std::string form[] = {"shrubbery request", "robotomy request", "presidential pardon"};
-	AForm *func[] = {&ShrubberyCreationForm , &RobotomyRequestForm, &PresidentialPardonForm};
+	AForm* (*create[3])(std::string) = {
+		&Intern::makeShrubbery,
+		&Intern::makeRobotomy,
+		&Intern::makePresident
+	};
+
 	while (i < 3){
-		i ++;}
-	if (form[i] == name)
-	{
-		return(func[i](target));
+		i ++;	if (form[i] == name)
+		{
+			i ++;
+			return(create[i](target));
+		}
 	}
 	std::cout << " please enter correct form :\n shrubbery request\nrobotomy request\npresidential pardon"<< std::endl;
 	return(NULL);
 }
+
+AForm* Intern::makeShrubbery(std::string target){
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm *Intern::makeRobotomy(std::string target){
+	return(new RobotomyRequestForm(target));
+}
+ AForm *Intern::makePresident(std::string target){
+	return(new PresidentialPardonForm(target));
+}
+
+
