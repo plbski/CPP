@@ -16,7 +16,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     std::cout << std::endl << "===== TEST 2 : Constructeurs invalides =====" << std::endl;
@@ -28,7 +28,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     try
@@ -39,7 +39,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     std::cout << std::endl << "===== TEST 3 : gradeUp() =====" << std::endl;
@@ -62,7 +62,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     std::cout << std::endl << "===== TEST 4 : gradeDown() =====" << std::endl;
@@ -85,7 +85,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     std::cout << std::endl << "===== TEST 5 : Copie et opérateur d’affectation =====" << std::endl;
@@ -104,7 +104,7 @@ int main()
     }
     catch (const std::exception &e)
     {
-        std::cout << "Exception attrapée : " << e.what() << std::endl;
+        std::cout << "Exception catch : " << e.what() << std::endl;
     }
 
     std::cout << std::endl << "===== FIN DES TESTS =====" << std::endl;
