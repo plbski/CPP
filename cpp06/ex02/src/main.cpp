@@ -2,11 +2,9 @@
 #include "../include/A.hpp"
 #include "../include/B.hpp"
 #include "../include/C.hpp"
-#include <typeinfo>
 
 Base *generate(void)
 {
-	std::srand(time(0));
 	switch (std::rand()%3)
 	{
 	case 0:
@@ -63,12 +61,17 @@ void identify(Base& p)
 
 int main()
 {
-	Base *test = generate();
-	std::cout << typeid(*test).name() << std::endl;
-	identify(test);
-	Base &tes = *generate();
-	std::cout << typeid(tes).name() << std::endl;
-	identify(tes);
-	delete(test);
+	std::srand(time(0));
+	for (int i = 0; i < 20; ++i) {
+    Base *p = generate();
+    identify(p);
+    delete p;
+	}
+	for (int i = 0; i < 20; ++i) {
+    	Base *p = generate();
+    	Base &r = *p;
+    	identify(r);
+    	delete p;
+}
 	return(0);
 }
