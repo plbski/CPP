@@ -35,28 +35,25 @@ void identify(Base* p)
 void identify(Base& p)
 {
 	try{
-		A a = dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
+		return;
 	}
-	catch (const std::bad_cast& e) {
-		try
-		{
-			B b =dynamic_cast<B&>(p);
-			std::cout << "B" << std::endl;
-		}
-		catch(const std::bad_cast& e)
-		{
-			try
-			{
-				C c =dynamic_cast<C&>(p);
-				std::cout << "C" << std::endl;
-			}
-			catch(const std::bad_cast& e)
-			{
-				std::cout << "no class match" << std::endl;
-			}
-		}
+	catch (...) {}
+	try
+	{
+		(void)dynamic_cast<B&>(p);
+		std::cout <<"B" << std::endl;
+		return;
 	}
+	catch(...){}
+	try
+	{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "C" << std::endl;
+		return;
+	}
+	catch(...){}
 }
 
 int main()
