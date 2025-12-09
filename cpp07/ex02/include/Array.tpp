@@ -1,7 +1,8 @@
 #pragma once
 
 #include<iostream>
-#include "../../color.hpp"
+#include <cstdlib>
+#include <ctime>
 
 template<typename T>
 class Array{
