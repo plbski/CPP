@@ -3,7 +3,7 @@ NAME	= convert
 
 # Compilateur & flags
 CPP 	= g++
-FLAGS	= -Wall -Werror -Wextra -g -std=c++98
+FLAGS	= -Wall -Werror -Wextra -g 
 
 # Dossiers
 SRC_DIR = src

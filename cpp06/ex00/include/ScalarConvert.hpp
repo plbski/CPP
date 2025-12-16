@@ -4,6 +4,8 @@
 #include "../../color.hpp"
 #include <iomanip>
 #include <iostream>
+#include <cstdlib>
+#include <limits>
 
 
 class ScalarConvert {

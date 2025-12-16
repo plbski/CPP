@@ -21,63 +21,51 @@ ScalarConvert& ScalarConvert::operator=(const ScalarConvert &other) {
 	return *this;
 }
 
-bool ConvertibleToDouble(std::string string)
+bool isDouble(std::string string)
 {
-	try
-	{
-		std::stod(string);
-	}
-	catch(const std::out_of_range&)
-	{
-		std::cout << BOLDRED << "double : is out of range\n" << RESET << std::endl;
-		return (false);
-	}
-	catch(const std::invalid_argument&)
-	{
-		std::cout << BOLDRED << "float : invalid\ndouble : argument not valid\n" << RESET << std::endl;
+	char *end = NULL;
+	double val = strtod(string.c_str(), &end);
+	(void)val;
+
+	if (*end != '\0')
 		return(false);
-	}
 	return(true);
 }
 
-bool ConvertibleToFloat(std::string string)
+bool isFloat(std::string string)
 {
-	try
-	{
-		std::stof(string);
-	}
-	catch(const std::out_of_range&)
-	{
-		std::cout << BOLDRED << "float : is out of range" << RESET << std::endl;
-		return (false);
-	}
-	catch(const std::invalid_argument&)
-	{
-		std::cout << BOLDRED << "float : argument not valid" << RESET << std::endl;
+	float maxFloat = std::numeric_limits<float>::max();
+	float minFloat = std::numeric_limits<float>::min();
+	char *end = NULL;
+	double val = strtod(string.c_str(), &end);
+
+	std::
+	std::cout << val << std::endl;
+	if (*end != 'f' || val < minFloat || val > maxFloat)
 		return(false);
-	}
 	return(true);
 }
 
-bool ConvertibleToInt(std::string string)
+bool isInt(std::string string)
 {
-	try
-	{
-		std::stoi(string);
-	}
-	catch(const std::out_of_range&)
-	{
-		std::cout << BOLDRED << "char : not printable\nint : is out of range" << RESET << std::endl;
-		return (false);
-	}
-	catch(const std::invalid_argument&)
-	{
-		std::cout << BOLDRED << "char : invalid \nint : invalid" << RESET << std::endl;
+	int maxInt = std::numeric_limits<int>::max();
+	int minInt = std::numeric_limits<int>::min();
+	char *end = NULL;
+	long val = strtol(string.c_str(), &end, 10);
+
+	if (val < minInt || val > maxInt || *end != '\0')
 		return(false);
-	}
 	return(true);
 }
 
+bool isChar(std::string string)
+{
+	const char *str = string.c_str();
+	int val= str[0];
+	if (string.size() == 1 && std::isprint(val))
+		return(true);
+	return(false);
+}
 bool CorrectInput(std::string string)
 {
 	size_t i = 0;
@@ -91,7 +79,6 @@ bool CorrectInput(std::string string)
 	{
 		if (string[i] == '.')
 			point ++;
-		
 		if (point > 1)
 			break;
 		else if(!std::isdigit(string[i]) && string[i] != '.')
@@ -105,27 +92,14 @@ bool CorrectInput(std::string string)
 
 void ScalarConvert::convert(std::string string)
 {
-	int i;
-	char a;
-	if (!CorrectInput(string))
-	{
-		std::cout << BOLDRED << "incorrect input" << RESET << std::endl;
-		return;
-	}
-	if (ConvertibleToInt(string))
-	{
-		i = std::stoi(string);
-		a = i;
-		if (std::isprint(a))
-			std::cout << "char : " << a;
-		else
-			std::cout << "char : not printable";
-		std::cout << "\nint : " << i;
+	if (isInt(string))
+		std::cout << string << " is int" << std::endl;
+	else if (isFloat(string))
+		std::cout << string << " is float" << std::endl;
+	else if (isDouble(string))
+		std::cout << string << " is double" << std::endl;
+	else if (isChar(string))
+		std::cout << string << " is char" << std::endl;
 
-	}
-	std::cout << std::showpoint;
-	if (ConvertibleToFloat(string))
-		std::cout  << "\nfloat : " << std::stof(string) <<"f\ndouble : " << std::stod(string)<< std::endl;
-	else if (ConvertibleToDouble(string))
-		std::cout << "\ndouble : " << std::stod(string)<< std::endl;
+	return;
 }
