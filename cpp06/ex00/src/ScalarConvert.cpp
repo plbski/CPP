@@ -27,7 +27,8 @@ bool isDouble(std::string string)
 	double val = strtod(string.c_str(), &end);
 	(void)val;
 
-	if (*end != '\0')
+	const char* test = std::strchr(string.c_str(), '.');
+	if (*end != '\0' || !test || std::strlen(test)< 2)
 		return(false);
 	return(true);
 }
@@ -38,9 +39,10 @@ bool isFloat(std::string string)
 	float minFloat = std::numeric_limits<float>::max() * -1;
 	char *end = NULL;
 	double val = strtof(string.c_str(), &end);
-	const char* test = std::strrchr(string.c_str(), '.');
+	const char* test = std::strchr(string.c_str(), '.');
 
-	std::cout << *end <<std::endl;
+	if (string == "nanf" || string == "-inff" || string == "inff")
+		return(true);
 	if (*end != 'f' || std::strlen(end) > 1 || val < minFloat || val > maxFloat || test == NULL)
 		return(false);
 	return(true);
@@ -69,34 +71,67 @@ bool isChar(std::string string)
 
 void ScalarConvert::convert(std::string string)
 {
+	int		i;
+	float	f;
+	double	d;
+	char	c;
+	int maxInt = std::numeric_limits<int>::max();
+	int minInt = std::numeric_limits<int>::max() * -1;
+
 	if (isInt(string))
 	{
 		std::cout << string << " is int" << std::endl;
-		int i = strtol(string.c_str(), NULL, 10);
-		float f = static_cast<float> (i);
-		double d= static_cast<double> (i);
-		std::cout << i << '\n' << f << ".0f\n" << d << ".0" << std::endl;
+		i = strtol(string.c_str(), NULL, 10);
+		f = static_cast<float> (i);
+		d= static_cast<double> (i);
 	}
 		
 	else if (isFloat(string))
 	{
 		std::cout << string << " is float" << std::endl;
-		char *end;
-		double f = strtod(string.c_str(), &end);
-		std::cout<< *end << std::endl;
-		int i = static_cast<int> (f);
-		double d= static_cast<double> (f);
-		if (std::floor(f) == f)
-			std::cout << i << '\n' << f << ".0f\n" << d << ".0" << std::endl;
-		else
-			std::cout << i << '\n' << f << ".f\n" << d <<std::endl;
+		f = strtof(string.c_str(), NULL);
+		std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.'))- 2);
+		i = static_cast<int> (f);
+		d= static_cast<double> (f);
 	}
 		
 	else if (isDouble(string))
+	{
 		std::cout << string << " is double"<<std::endl;
-	else if (isChar(string))
-		std::cout << string << " is char" << std::endl;
+		d = strtod(string.c_str(), NULL);
+		std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.')) - 1);
+
+		if (d < maxInt && d > minInt)
+			i = static_cast<int> (d);
+		else
+			i = maxInt;
+		f= static_cast<float> (d);
+	}
+
+	// else if (isChar(string))
+	// 	std::cout << string << " is char" << std::endl;
+	// else
+	// 	std::cout << "invalid input" << std::endl;
+
+	if (string == "nan" || string == "-inf" || string == "inf")
+		{
+			std::cout << "char : impossible\nint : impossible\nfloat : " << d << "f\ndouble : " << d << std::endl;
+			return;
+		}
+	else if (string == "nanf" || string == "-inff" || string == "inff")
+	{
+			std::cout << "char : impossible\nint : impossible\nfloat : " << f << "f\ndouble : " << f << std::endl;
+			return;
+	}
+	else if (i < maxInt && i >  minInt)
+		{
+			c = i;
+			if (std::isprint(i))
+				std::cout << "char: "<< c << "\nint : " << i << "\nfloat : " << f << ".0f\ndouble" << d << ".0" << std::endl;
+			else
+				std::cout << "char: non displable" << "\nint : " << i << "\nfloat : " << f << ".0f\ndouble" << d << ".0" << std::endl;
+		}
 	else
-		std::cout << "invalid input" << std::endl;
+		 std::cout << "char : impossible\nint : impossible" << "\nfloat : " << f << ".0f\ndouble" << d << ".0" << std::endl;
 	return;
 }

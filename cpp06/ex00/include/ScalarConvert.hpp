@@ -8,6 +8,8 @@
 #include <limits>
 #include <cstring>
 #include <cmath>
+#include <exception>
+
 
 class ScalarConvert {
 public:
