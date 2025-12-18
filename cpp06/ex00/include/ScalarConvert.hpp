@@ -10,7 +10,6 @@
 #include <cmath>
 #include <exception>
 
-
 class ScalarConvert {
 public:
 	ScalarConvert();
@@ -22,5 +21,10 @@ public:
 private:
 	// fields
 };
+
+void cInt(std::string string,int *i,float *f,double *d);
+void cFloat(std::string string,int *i,float *f,double *d);
+void cDouble(std::string string,int *i,float *f,double *d);
+void cChar(std::string string, int *i, float *f, double *d, char *c);
 
 #endif // SCALARCONVERT_HPP

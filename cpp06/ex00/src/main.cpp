@@ -2,6 +2,7 @@
 #include <fstream>
 #include<string>
 #include "../include/ScalarConvert.hpp"
+
 int main(int ac, char **av)
 {
 	ScalarConvert test;

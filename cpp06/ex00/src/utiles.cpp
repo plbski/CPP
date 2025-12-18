@@ -1,24 +1,59 @@
 #include "../include/ScalarConvert.hpp"
 
 
-void printFloat(std::string string)
+void cInt(std::string string,int *i,float *f,double *d)
 {
+	std::cout << string << " is int" << std::endl;
+	*i = strtol(string.c_str(), NULL, 10);
+	*f = static_cast<float> (*i);
+	*d= static_cast<double> (*i);
+}
+
+void cFloat(std::string string,int *i,float *f,double *d)
+{
+	int maxInt = std::numeric_limits<int>::max();
+	int minInt = std::numeric_limits<int>::max() * -1;
+
 	std::cout << string << " is float" << std::endl;
-	char c;
-	float f = strtof(string.c_str(), NULL);
-	if (string == "nanf" || string == "-inff" || string == "inff")
+	*f = strtof(string.c_str(), NULL);
+	if (string != "nanf" && string != "-inff" && string != "inff")
 	{
-		std::cout << "char : impossible\nint : impossible\nfloat : " << f << "f\ndouble : " << f << std::endl;
-		return;
+		std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.'))- 2);
+		if (*d < maxInt && *d > minInt)
+			*i = static_cast<int> (*d);
+		else
+			*i = maxInt;
+		*d= static_cast<double> (*f);
 	}
-	std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.'))- 2);
-	int i = static_cast<int> (f);
-	double d= static_cast<double> (f);
-	if(std::isprint(i))
+}
+
+void cDouble(std::string string,int *i,float *f,double *d)
+{
+	int maxInt = std::numeric_limits<int>::max();
+	int minInt = std::numeric_limits<int>::max() * -1;
+	int maxFloat = std::numeric_limits<float>::max();
+	int minFloat = std::numeric_limits<float>::max() * -1;
+
+	std::cout << string << " is double"<<std::endl;
+	*d = strtod(string.c_str(), NULL);
+	if (string != "nan" && string != "-inf" && string != "inf")
 	{
-		c = i;
-		std::cout << "char: "<< c << "\nint : " << i << "\nfloat : " << f << ".0f\ndouble" << d << ".0" << std::endl;
+		std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.')) - 1);
+		if (*d < maxInt && *d > minInt)
+			*i = static_cast<int> (*d);
+		else
+			*i = maxInt;
+		if (*d < maxFloat && *d > minFloat)
+			*f= static_cast<float> (*d);
+		else 
+			*f = maxFloat;
 	}
-	else
-	 std::cout << "char : Non displayable\nint : " << i << "\nfloat : " << f << ".0f\ndouble" << d << ".0" << std::endl;
+}
+
+void cChar(std::string string, int *i, float *f, double *d, char *c)
+{
+	*c = string[0];
+	*i = *c;
+	*f = static_cast<float> (*i);
+	*d= static_cast<double> (*i);
 }
