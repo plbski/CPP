@@ -35,13 +35,13 @@ bool isDouble(std::string string)
 bool isFloat(std::string string)
 {
 	float maxFloat = std::numeric_limits<float>::max();
-	float minFloat = std::numeric_limits<float>::min();
+	float minFloat = std::numeric_limits<float>::max() * -1;
 	char *end = NULL;
-	double val = strtod(string.c_str(), &end);
+	double val = strtof(string.c_str(), &end);
+	const char* test = std::strrchr(string.c_str(), '.');
 
-	std::
-	std::cout << val << std::endl;
-	if (*end != 'f' || val < minFloat || val > maxFloat)
+	std::cout << *end <<std::endl;
+	if (*end != 'f' || std::strlen(end) > 1 || val < minFloat || val > maxFloat || test == NULL)
 		return(false);
 	return(true);
 }
@@ -49,7 +49,7 @@ bool isFloat(std::string string)
 bool isInt(std::string string)
 {
 	int maxInt = std::numeric_limits<int>::max();
-	int minInt = std::numeric_limits<int>::min();
+	int minInt = std::numeric_limits<int>::max() * -1;
 	char *end = NULL;
 	long val = strtol(string.c_str(), &end, 10);
 
@@ -66,40 +66,37 @@ bool isChar(std::string string)
 		return(true);
 	return(false);
 }
-bool CorrectInput(std::string string)
-{
-	size_t i = 0;
-	int point = 0;
-
-	if (string == "-inf" || string == "+inf" || string == "-inff" || string == "+inff")
-		return(true);
-	if (string[i] == '-')
-		i ++;
-	while (i < string.size())
-	{
-		if (string[i] == '.')
-			point ++;
-		if (point > 1)
-			break;
-		else if(!std::isdigit(string[i]) && string[i] != '.')
-			break;
-		i ++;
-	}
-	if (i ==  string.size() || (string[i] == 'f' && i + 1==  string.size()))
-		return(true);
-	return(false);
-}
 
 void ScalarConvert::convert(std::string string)
 {
 	if (isInt(string))
+	{
 		std::cout << string << " is int" << std::endl;
+		int i = strtol(string.c_str(), NULL, 10);
+		float f = static_cast<float> (i);
+		double d= static_cast<double> (i);
+		std::cout << i << '\n' << f << ".0f\n" << d << ".0" << std::endl;
+	}
+		
 	else if (isFloat(string))
+	{
 		std::cout << string << " is float" << std::endl;
+		char *end;
+		double f = strtod(string.c_str(), &end);
+		std::cout<< *end << std::endl;
+		int i = static_cast<int> (f);
+		double d= static_cast<double> (f);
+		if (std::floor(f) == f)
+			std::cout << i << '\n' << f << ".0f\n" << d << ".0" << std::endl;
+		else
+			std::cout << i << '\n' << f << ".f\n" << d <<std::endl;
+	}
+		
 	else if (isDouble(string))
-		std::cout << string << " is double" << std::endl;
+		std::cout << string << " is double"<<std::endl;
 	else if (isChar(string))
 		std::cout << string << " is char" << std::endl;
-
+	else
+		std::cout << "invalid input" << std::endl;
 	return;
 }
