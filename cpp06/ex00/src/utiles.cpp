@@ -19,8 +19,8 @@ void cFloat(std::string string,int *i,float *f,double *d)
 	if (string != "nanf" && string != "-inff" && string != "inff")
 	{
 		std::cout << std::fixed << std::setprecision(std::strlen(std::strchr(string.c_str(), '.'))- 2);
-		if (*d < maxInt && *d > minInt)
-			*i = static_cast<int> (*d);
+		if (*f < maxInt && *f > minInt)
+			*i = static_cast<int> (*f);
 		else
 			*i = maxInt;
 		*d= static_cast<double> (*f);
@@ -29,10 +29,10 @@ void cFloat(std::string string,int *i,float *f,double *d)
 
 void cDouble(std::string string,int *i,float *f,double *d)
 {
-	int maxInt = std::numeric_limits<int>::max();
-	int minInt = std::numeric_limits<int>::max() * -1;
-	int maxFloat = std::numeric_limits<float>::max();
-	int minFloat = std::numeric_limits<float>::max() * -1;
+	int		maxInt = std::numeric_limits<int>::max();
+	int		minInt = std::numeric_limits<int>::max() * -1;
+	float	maxFloat = std::numeric_limits<float>::max();
+	float	minFloat = std::numeric_limits<float>::max() * -1;
 
 	std::cout << string << " is double"<<std::endl;
 	*d = strtod(string.c_str(), NULL);

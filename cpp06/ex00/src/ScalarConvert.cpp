@@ -83,10 +83,10 @@ void ScalarConvert::convert(std::string string)
 	float	f;
 	double	d;
 	char	c;
-	int maxInt = std::numeric_limits<int>::max();
-	int minInt = std::numeric_limits<int>::max() * -1;
-	int maxFloat = std::numeric_limits<float>::max();
-	int minFloat = std::numeric_limits<float>::max() * -1;
+	int		maxInt = std::numeric_limits<int>::max();
+	int		minInt = std::numeric_limits<int>::max() * -1;
+	float	maxFloat = std::numeric_limits<float>::max();
+	float	minFloat = std::numeric_limits<float>::max() * -1;
 	std::cout << std::fixed << std::setprecision(1);
 
 	if (isInt(string))
