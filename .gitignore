@@ -1,0 +1,82 @@
+# Binaries
+build/
+webserv
+webserv_coverage
+run_test
+run_test_coverage
+
+# Coverage
+coverage_html/
+
+# CppUTest
+lib/cpputest/
+
+# Doxygen generated
+doc/html/
+
+# Misc
+.vscode/
+.DS_Store
+*.sw?
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.slo
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lai
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+*.DS_Store
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Fortran module files
+*.smod
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# debug information files
+*.dwo
