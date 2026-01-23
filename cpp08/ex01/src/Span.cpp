@@ -30,6 +30,13 @@ void Span::addNumber(int n)
 	_span.push_back(n);
 }
 
+void Span::addRange(std::vector<int> range)
+{
+	if (range.size() >= (i_max -_span.size()))
+		throw(SpanException("not enouth place for add this range"));
+	_span.insert(_span.begin() + _span.size(), range.begin(), range.end());
+}
+
 int Span::shortestSpan()
 {
 	if (_span.size() < 2)
@@ -55,3 +62,5 @@ int Span::longestSpan()
 	std::sort(_sort.begin(), _sort.end());
 	return(_sort[_sort.size() - 1] - _sort[0]);
 }
+
+std::vector<int> Span::_range(){return(_span);}

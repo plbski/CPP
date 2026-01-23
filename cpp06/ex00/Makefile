@@ -2,7 +2,7 @@
 NAME	= convert
 
 # Compilateur & flags
-CPP 	= g++
+CPP 	= c++
 FLAGS	= -Wall -Werror -Wextra -g 
 
 # Dossiers

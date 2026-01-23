@@ -12,14 +12,10 @@
 
 class ScalarConvert {
 public:
-	ScalarConvert();
-	~ScalarConvert();
-	ScalarConvert(const ScalarConvert &other);
-	ScalarConvert& operator=(const ScalarConvert &other);
-	static void	convert(std::string string);
 
+	static void	convert(std::string string);
 private:
-	// fields
+	ScalarConvert();
 };
 
 void cInt(std::string string,int *i,float *f,double *d);

@@ -4,23 +4,6 @@ ScalarConvert::ScalarConvert() {
 	// std::cout << "ScalarConvert default constructor called" << std::endl;
 }
 
-ScalarConvert::~ScalarConvert() {
-	// std::cout << "ScalarConvert destructor called" << std::endl;
-}
-
-ScalarConvert::ScalarConvert(const ScalarConvert &other) {
-	// std::cout << "ScalarConvert copy constructor called" << std::endl;
-	*this = other;
-}
-
-ScalarConvert& ScalarConvert::operator=(const ScalarConvert &other) {
-	std::cout << "ScalarConvert copy assignment operator called" << std::endl;
-	if (this != &other) {
-		(void)other;
-	}
-	return *this;
-}
-
 bool isDouble(std::string string)
 {
 	char *end = NULL;
@@ -51,7 +34,7 @@ bool isFloat(std::string string)
 		std::cout << "char : impossible\nint : impossible\nfloat : " << val << "f\ndouble : " << val << std::endl;
 		return(false);
 	}
-	if (*end != 'f' || std::strlen(end) > 1 || val < minFloat || val > maxFloat || test == NULL)
+	if (*end != 'f' || std::strlen(end) > 1 || val < minFloat || val > maxFloat || !test || std::strlen(test) < 3)
 		return(false);
 	return(true);
 }
