@@ -7,7 +7,8 @@
 #include <stack>
 #include<deque>
 
-class MutantStack
+template <typename T>
+class MutantStack : public std::stack<T>
 {
 	public:
 		MutantStack();
@@ -16,6 +17,5 @@ class MutantStack
 		MutantStack& operator=(const MutantStack& other);
 	
 	private:
-		std::stack<int> test;
 };
 

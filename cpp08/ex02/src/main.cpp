@@ -3,5 +3,6 @@
 int main()
 {
 	std::stack<int> test;
-	test.
+	test.push(9);
+	return(0);
 }
