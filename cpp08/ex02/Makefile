@@ -1,5 +1,5 @@
 # Nom de l'exécutable
-NAME	= finder
+NAME	= Mutant
 
 # Compilateur & flags
 CPP 	= g++
