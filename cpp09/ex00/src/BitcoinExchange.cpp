@@ -16,9 +16,9 @@ time_t convert_date(std::string line)
 {
 	std::string date = line.substr(0, 10);
 	std::tm test = {};
-		test.tm_year = std::atoi(date.substr(0,4).c_str()) - 1900;
-		test.tm_mon = std::atoi(date.substr(5,2).c_str());
-		test.tm_mday = std::atoi(date.substr(8,2).c_str());
+		test.tm_year = strtol(date.substr(0,4).c_str(), NULL, 10) - 1900;
+		test.tm_mon = strtol(date.substr(5,2).c_str(), NULL, 10);
+		test.tm_mday = strtol(date.substr(8,2).c_str(), NULL, 10);
 	if ((date[4] != '-' && date[7] != '-' && !date [10]) ||
 		!isValidDate(test.tm_year, test.tm_mon, test.tm_mday))
 		throw(BitException("error date"));
@@ -29,11 +29,10 @@ time_t convert_date(std::string line)
 bool isfloat(std::string string)
 {
 	char *end = NULL;
-	double val = std::strtof(string.c_str(), &end);
+	double val = strtof(string.c_str(), &end);
 	(void)val;
 
-	const char* test = std::strchr(string.c_str(), '.');
-	if (*end != '\0' || !test || std::strlen(test)< 2)
+	if (*end != '\0' || string.size() - string.rfind('.') < 2)
 		return(false);
 	return(true);
 }
@@ -87,7 +86,7 @@ void reader(std::map<time_t, float>data, char *av)
 			try
 			{
 				value = DateValue(data, line);
-				nb = std::atoi(line.substr(12).c_str());
+				nb = strtod(line.substr(12).c_str(), NULL);
 				if (nb < 0 && nb >= 1000)
 					std::cout << "negative or to hight value" << std::endl;
 				else

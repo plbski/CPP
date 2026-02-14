@@ -26,7 +26,7 @@ int main(int ac, char **av)
 		}
 		catch(const std::exception & e){};
 		
-		data[t] = std::strtof(line.substr(11).c_str(), NULL);
+		data[t] = strtof(line.substr(11).c_str(), NULL);
 	}
 	file.close();
 	reader(data, av[1]);

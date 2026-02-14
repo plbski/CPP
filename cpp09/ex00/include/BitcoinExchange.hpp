@@ -3,12 +3,13 @@
 #include<iostream>
 #include<map>
 #include <iostream>
+#include <cstring>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <ctime>
-
+#include <cmath>
 
 class BitException : public std::exception
 {
