@@ -63,4 +63,50 @@ void test(std::vector<std::pair<int, int> > paire)
 	std::cout << std::endl;
 	printVector(G);
 }
+
+void print_vectorNode(std::vector<Node> paire)
+{
+	for (size_t i = 0; i < paire.size(); i ++)
+	{
+		std::cout << paire[i].value << " > ";
+		if (!paire[i].loser.empty())
+			print_vectorNode(paire[i].loser);
+	}
+	std::cout << std::endl;
+}
+
+void fj(std::vector<Node> paire)
+{
+	std::vector<Node>	G;
+	Node				save;
+	(void)save;
+
+	std::cout << "\n size : " << paire.size() << "\n" << std::endl;
+	if (paire.size() % 2 == 1){
+		save = paire[0];
+		paire.pop_back();
+	}
+	print_vectorNode(paire);
+	for (size_t i = 0; i + 2 < paire.size() + 2; i += 2)
+	{
+		if (paire[i].value > paire[i +1].value)
+		{
+			paire[i].loser.push_back(paire[i + 1]);
+			G.push_back(paire[i]);
+		}
+		else
+		{
+			paire[i + 1].loser.push_back(paire[i]);
+			G.push_back(paire[i + 1]);
+		}
+	}
+	print_vectorNode(G);
+	if (G.size() > 1)
+	{
+		fj(G);
+		return;
+	}
+	std::cout << " start recu" << std::endl;
+	print_vectorNode(G);
+}
 // 1, 3, 5, 7, 8, 10, 12, 15, 22, 23, 34, 42, 45, 56, 67, 89, 99

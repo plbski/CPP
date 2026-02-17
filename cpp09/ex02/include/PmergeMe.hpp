@@ -5,11 +5,11 @@
 #include <vector>
 #include <algorithm>
 
-void test(std::vector<std::pair<int, int> > paire);
-// template <typename T>
-//1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731
-// void FordJohnson(T &container)
-// {
+struct Node{
+	int value;
+	std::vector<Node> loser;
+};
 
-// }
+void test(std::vector<std::pair<int, int> > paire);
+void fj(std::vector<Node> paire);
 
