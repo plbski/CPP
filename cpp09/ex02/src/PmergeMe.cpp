@@ -48,15 +48,16 @@ void test(std::vector<std::pair<int, int> > paire)
 	G.insert(G.begin(), P[0]);
 	std::vector<int>::iterator te;
 	size_t current;
+	size_t pos = 1;
 	//bon jusque la 
 	for (size_t i = 1; john[i] || john[i] >= P.size(); i ++){
 		current = john[i];
 		if (current > P.size() )
 			current = P.size();
 		for (size_t j = current - 1; j > john[i - 1] - 1; j --){
-			te = std::lower_bound(G.begin(), G.end(), P[j]);
+			te = std::lower_bound(G.begin(), G.begin() + j + pos, P[j]);
 			G.insert(te, P[j]);
-			std::cout << j << " ";
+			pos ++;
 		}
 	}
 	std::cout << std::endl;
