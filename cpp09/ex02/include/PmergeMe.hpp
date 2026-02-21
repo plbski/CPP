@@ -10,6 +10,12 @@ struct Node{
 	std::vector<Node> loser;
 };
 
-void test(std::vector<std::pair<int, int> > paire);
-void fj(std::vector<Node> paire);
+struct NodeCompare {
+	bool operator()(const Node& a, const Node& b) const {
+		return a.value < b.value;
+	}
+};
+
+std::vector<Node> fj(std::vector<Node> paire);
+void print_vectorNode(std::vector<Node> paire);
 

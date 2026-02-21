@@ -11,11 +11,25 @@ int main(int ac, char **av){
 	// paires.push_back(std::make_pair(8, 56));  // Paire E
 	// paires.push_back(std::make_pair(89, 12)); // Paire G
 	// test(paires);
+	std::srand(time(0));
 	std::vector<Node> test;
-	for (int i = 1; i < ac; i ++){
-		Node a;
-		a.value = std::strtol(av[i], NULL, 10);
-		test.push_back(a);
+	if (ac <= 1)
+	{
+		for (int i = 0; i < 3000 ; i ++)
+		{
+			Node b;
+			b.value = std::rand() % 100000;
+			test.push_back(b);
+		}
 	}
-	fj(test);
+	else
+	{
+		for (int i = 1; i < ac; i ++){
+			Node a;
+			a.value = std::strtol(av[i], NULL, 10);
+			test.push_back(a);
+		}
+	}
+	print_vectorNode(fj(test));
 }
+
