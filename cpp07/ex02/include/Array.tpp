@@ -7,32 +7,33 @@
 template<typename T>
 class Array{
 	public:
-		Array() : data(new T[0]), size(0) {};
-		Array(unsigned int N) : data(new T[N]), size(N) {};
-		Array(const Array &other) : data(new T[other.size]), size(other.size) {
+		Array() : data(new T()), _size(0) {};
+		Array(unsigned int N) : data(new T[N]), _size(N) {};
+		Array(const Array &other) : data(new T[other._size]), _size(other._size) {
 				*this = other;
 		};
 		~Array(){};
 		Array& operator=(const Array &other)
 		{
-			for (unsigned int i = 0; i < other.size &&  i < size; i ++)
+			for (int i = 0; i < other._size &&  i < _size; i ++)
 				data[i] = other.data[i];
 			return(*this);
 		};
-		T& operator[](const unsigned int i)
+		T& operator[](const int i)
 		{
-			if (i >= size)
+			if (i >= _size || i < 0)
 				throw(std::out_of_range("out of range"));
 			return(data[i]);
 		}
-		const T& operator[](const unsigned int i) const
+		const T& operator[](const int i) const
 		{
-			if (i >= size)
+			if (i >= _size || i < 0)
 				throw(std::out_of_range("out of range"));
 			return(data[i]);
 		}
-
+		T& operator*(){return(*data);};
+		int size(){return(_size);};
 	private:
 		T *data;
-		unsigned int size;
+		int _size;
 };

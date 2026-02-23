@@ -2,7 +2,7 @@
 NAME	= test
 
 # Compilateur & flags
-CPP 	= g++
+CPP 	= c++
 FLAGS	= -Wall -Werror -Wextra -g -std=c++98
 
 # Dossiers
