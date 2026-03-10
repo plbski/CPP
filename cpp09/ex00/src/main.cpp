@@ -24,11 +24,16 @@ int main(int ac, char **av)
 		{
 			t = convert_date(line);
 		}
-		catch(const std::exception & e){};
+		catch(const std::exception & e){
+			std::cout << "error in csv file\n\n-----END OF PROGRAM-----\n" << std::endl;
+			return(1);
+		};
 		
 		data[t] = strtof(line.substr(11).c_str(), NULL);
 	}
 	file.close();
+	std::cout << "-----START CALCUL-----" << std::endl;
 	reader(data, av[1]);
+	std::cout << "------END CALCUL------" << std::endl;
 	return(0);
 }

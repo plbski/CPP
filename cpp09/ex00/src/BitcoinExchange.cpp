@@ -58,8 +58,12 @@ float DateValue(std::map<time_t, float>data, std::string line)
 	if (it->first == t || it == data.begin())
 		return(it->second);
 	c = it->first;
+	if (it == data.end()){
+		it --;
+		return(it->second);
+	}
 	it --;
-	if (c - t >= t - it->first)
+	if (c - t >= t - it->first )
 		return(it->second);
 	it ++;
 	return(it->second);
@@ -79,7 +83,7 @@ void reader(std::map<time_t, float>data, char *av)
 	}
 	while(std::getline(search_data, line))
 	{
-		if (line[11] != '|' || line.size() < 13)
+		if (line[0] == '\n' || line.size() < 13 || line.size() > 17 ||line[11] != '|')
 			std::cout << "invalid format" << std::endl;
 		else
 		{
