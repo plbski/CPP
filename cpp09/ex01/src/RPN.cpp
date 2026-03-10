@@ -21,10 +21,10 @@ RPN& RPN::operator=(const RPN &other) {
 	return *this;
 }
 
-bool is_operation(int c, std::stack<int> &calcul)
+bool is_operation(float c, std::stack<float> &calcul)
 {
-	int a;
-	int b;
+	float a;
+	float b;
 	if (calcul.size() < 2)
 		return false;
 	a = calcul.top();
@@ -59,6 +59,6 @@ void RPN::calculation(std::string input){
 	if (calcul.size() == 1)
 		std::cout << calcul.top() << std::endl;
 	else
-		std::cout << "Error end" << std::endl;
+		std::cout << "Error input need to respect rules of polish mathematical expression" << std::endl;
 	return;
 }

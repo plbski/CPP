@@ -12,6 +12,6 @@ public:
 	RPN& operator=(const RPN &other);
 	void	calculation(std::string input);
 private:
-	std::stack<int> calcul;
+	std::stack<float> calcul;
 };
 
