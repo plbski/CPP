@@ -51,21 +51,12 @@ bool isInt(std::string string)
 float DateValue(std::map<time_t, float>data, std::string line)
 {
 	time_t t = convert_date(line);
-	time_t c;
 	if (!t)
 		return 0;
 	std::map<time_t, float>::iterator it = data.lower_bound(t);
 	if (it->first == t || it == data.begin())
 		return(it->second);
-	c = it->first;
-	if (it == data.end()){
-		it --;
-		return(it->second);
-	}
 	it --;
-	if (c - t >= t - it->first )
-		return(it->second);
-	it ++;
 	return(it->second);
 }
 
