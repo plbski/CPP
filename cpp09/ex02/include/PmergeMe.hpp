@@ -16,6 +16,7 @@ struct NodeCompare {
 	}
 };
 
-std::vector<Node> fj(std::vector<Node> paire);
+std::vector<Node> fj(std::vector<Node> paire, int depth);
 void print_vectorNode(std::vector<Node> paire);
-
+void print_dequeNode(std::deque<Node> paire);
+std::deque<Node> fj_deque(std::deque<Node> paire, int depth);

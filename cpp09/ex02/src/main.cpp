@@ -12,14 +12,16 @@ int main(int ac, char **av){
 	// paires.push_back(std::make_pair(89, 12)); // Paire G
 	// test(paires);
 	std::srand(time(0));
-	std::vector<Node> test;
+	std::vector<Node> vec;
+	std::deque<Node> deq;
 	if (ac <= 1)
 	{
 		for (int i = 0; i < 3000 ; i ++)
 		{
 			Node b;
 			b.value = std::rand() % 100000;
-			test.push_back(b);
+			vec.push_back(b);
+			deq.push_back(b);
 		}
 	}
 	else
@@ -27,9 +29,21 @@ int main(int ac, char **av){
 		for (int i = 1; i < ac; i ++){
 			Node a;
 			a.value = std::strtol(av[i], NULL, 10);
-			test.push_back(a);
+			vec.push_back(a);
+			deq.push_back(a);
 		}
 	}
-	print_vectorNode(fj(test));
+	clock_t start = clock();
+	vec = fj(vec, 0);
+	clock_t end = clock();
+	double elapse = static_cast<double> (end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "time to process a range of " << vec.size() << " with std::vector = " << elapse << " /us" << std::endl;
+	start = clock();
+	deq = fj_deque(deq, 0);
+	end = clock();
+	print_dequeNode(deq);
+	elapse = static_cast<double> (end - start) / CLOCKS_PER_SEC * 1000000;
+	std::cout << "time to process a range of " << deq.size() << " with std::deque = " << elapse << " /us" << std::endl;
+
 }
 
