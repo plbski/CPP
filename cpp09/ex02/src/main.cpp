@@ -15,33 +15,32 @@ int main(int ac, char **av){
 	std::vector<Node> vec;
 	std::deque<Node> deq;
 	if (ac <= 1)
-	{
-		for (int i = 0; i < 3000 ; i ++)
-		{
-			Node b;
-			b.value = std::rand() % 100000;
-			vec.push_back(b);
-			deq.push_back(b);
-		}
+		return(0);
+	std::cout << "Before : ";
+	for (int i = 1; i < ac ; i ++){
+		std::cout << av[i] << " ";
 	}
-	else
-	{
-		for (int i = 1; i < ac; i ++){
-			Node a;
-			a.value = std::strtol(av[i], NULL, 10);
-			vec.push_back(a);
-			deq.push_back(a);
-		}
-	}
+	std::cout<< std::endl;
 	clock_t start = clock();
+	for (int i = 1; i < ac; i ++){
+		Node a;
+		a.value = std::strtol(av[i], NULL, 10);
+		vec.push_back(a);
+	}
 	vec = fj(vec, 0);
 	clock_t end = clock();
+	std::cout << "After : ";
+	print_vectorNode(vec);
 	double elapse = static_cast<double> (end - start) / CLOCKS_PER_SEC * 1000000;
 	std::cout << "time to process a range of " << vec.size() << " with std::vector = " << elapse << " /us" << std::endl;
 	start = clock();
+	for (int i = 1; i < ac; i ++){
+		Node a;
+		a.value = std::strtol(av[i], NULL, 10);
+		deq.push_back(a);
+	}
 	deq = fj_deque(deq, 0);
 	end = clock();
-	print_dequeNode(deq);
 	elapse = static_cast<double> (end - start) / CLOCKS_PER_SEC * 1000000;
 	std::cout << "time to process a range of " << deq.size() << " with std::deque = " << elapse << " /us" << std::endl;
 

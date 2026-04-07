@@ -75,14 +75,14 @@ static std::string indent(int depth)
 void print_dequeNode(std::deque<Node> paire)
 {
 	for (size_t i = 0; i < paire.size() - 1; i++)
-		std::cout << paire[i].value << " < ";
+		std::cout << paire[i].value << " ";
 	std::cout << paire[paire.size() - 1].value << std::endl;
 }
 
 void print_vectorNode(std::vector<Node> paire)
 {
 	for (size_t i = 0; i < paire.size() - 1; i++)
-		std::cout << paire[i].value << " < ";
+		std::cout << paire[i].value << " ";
 	std::cout << paire[paire.size() - 1].value << std::endl;
 }
 
